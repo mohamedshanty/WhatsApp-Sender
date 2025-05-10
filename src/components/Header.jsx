@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
 import CustomButton from "./CustomButton";
 
@@ -6,14 +8,31 @@ const navigationItems = [
   { id: "how-it-works", label: "How It Works" },
   { id: "pricing", label: "Pricing" },
   { id: "faq", label: "FAQ" },
-  { id: "documentation", label: "Documentation" },
 ];
 
 export default function Header() {
+  const location = useLocation();
+
+  // Scroll on hash when landing on home page
+  useEffect(() => {
+    if (location.pathname === "/" && location.hash) {
+      const sectionId = location.hash.substring(1); // remove the '#' character
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+    if (location.pathname !== "/") {
+      // Navigate to home with hash
+      window.location.href = `/#${sectionId}`;
+    } else {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -26,9 +45,10 @@ export default function Header() {
         backdropFilter: "blur(2px)",
         boxShadow: "none",
         py: { xs: 1, md: 2 },
+        zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
+      position="fixed"
       elevation={1}
-      position="sticky"
       component="header"
     >
       <Container maxWidth="xl">
@@ -68,6 +88,18 @@ export default function Header() {
                 {item.label}
               </Button>
             ))}
+            <Button
+              href="/documentation"
+              sx={{
+                color: "#A9A9A9",
+                textTransform: "none",
+                fontSize: { md: "0.9rem", lg: "1rem" },
+                transition: "0.3s",
+                "&:hover": { color: "white" },
+              }}
+            >
+              Documentation
+            </Button>
           </Box>
 
           {/* CTA Buttons */}
@@ -80,6 +112,8 @@ export default function Header() {
           >
             <Button
               variant="contained"
+              component={Link} // استخدم Link هنا
+              to="/signin"
               sx={{
                 backgroundColor: "transparent",
                 color: "white",
@@ -91,10 +125,9 @@ export default function Header() {
               Login
             </Button>
             <CustomButton
+              sx={{ backgroundColor: "white", color: "black" }}
               label="Get Started"
-              background="white"
-              color="black"
-              backgroundGradient={undefined}
+              link={"/signup"}
             />
           </Box>
         </Toolbar>

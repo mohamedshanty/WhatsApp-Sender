@@ -1,29 +1,25 @@
 import React, { useState } from "react";
 import { Button, Box } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Link } from "react-router-dom";
 
-export default function CustomButton({
-  label,
-  background,
-  color,
-  backgroundGradient,
-}) {
+export default function CustomButton({ label, sx, link }) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <Button
+      component={Link}
+      to={link}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       variant="contained"
       sx={{
-        backgroundColor: { background },
-        backgroundImage: backgroundGradient,
-        color: { color },
         borderRadius: "12px",
         fontWeight: "bold",
         textTransform: "none",
-        px: 3,
-        py: 1.5,
+        px: { xs: 1.5, md: 3 },
+        py: { xs: 1, md: 1.5 },
+        ...sx,
       }}
       endIcon={
         <Box

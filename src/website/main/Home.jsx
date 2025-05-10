@@ -1,15 +1,15 @@
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import React from "react";
-import Hero from "./Hero";
+import Hero from "../Hero/Hero";
 import { Box } from "@mui/material";
-import IntegrationSection from "./Integration";
-import HowIt from "./HowIt";
-import UseCases from "./UseCases";
-import Pricing from "./Pricing";
-import FAQ from "./FAQ";
-import WhatsAppAPI from "./WhatsAppAPI";
-import Footer from "./Footer";
-import ChatSection from "./ChatSection";
+import IntegrationSection from "../integrationSection/Integration";
+import HowIt from "../howIt/HowIt";
+import UseCases from "../useCase/UseCases";
+import Pricing from "../pricing/Pricing";
+import FAQ from "../faq/FAQ";
+import WhatsAppAPI from "../whatsAppAPI/WhatsAppAPI";
+import Footer from "../Footer/Footer";
+import ChatSection from "../chatSection/ChatSection";
 
 export default function Home() {
   return (

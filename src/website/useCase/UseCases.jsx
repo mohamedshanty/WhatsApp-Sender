@@ -6,7 +6,9 @@ import SmartToyIcon from "@mui/icons-material/SmartToy";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import InsightsIcon from "@mui/icons-material/Insights";
-import CustomButton from "../components/CustomButton";
+import CustomButton from "../../components/CustomButton";
+import TitleSection from "../../components/TitleSection";
+import AnimatedComponent from "../../AnimatedComponent";
 
 const useCases = [
   {
@@ -116,86 +118,72 @@ export default function UseCases() {
         color: "white",
       }}
     >
-      <Container maxWidth="lg">
-        <Typography
-          variant="h3"
-          component={"h1"}
-          gutterBottom
-          align="center"
-          sx={{
-            fontWeight: "bold",
-            fontSize: { xs: "32px", md: "48px" },
-          }}
-        >
-          Suggested Use Cases to
-          <Typography
-            variant="h4"
-            component={"h2"}
-            gutterBottom
-            sx={{ color: "#24D366", fontSize: { xs: "32px", md: "48px" } }}
+      <AnimatedComponent yOffset={50} delay={0}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: "center" }}>
+            <TitleSection
+              subheading={undefined}
+              heading={"Suggested Use Cases to"}
+              highlight={"Inspire Your Integration"}
+              description={
+                "Discover how businesses across industries are leveraging our WhatsApp API to transform their communication and drive results."
+              }
+              sxDescription={undefined}
+            />
+          </Box>
+
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(2, 1fr)",
+                md: "repeat(3, 1fr)",
+              },
+              gap: 3,
+              rowGap: 3,
+              columnGap: 3,
+              mt: 4,
+            }}
           >
-            Inspire Your Integration
-          </Typography>
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          sx={{ mb: 6, color: "#ccc" }}
-        >
-          Discover how businesses across industries are leveraging our WhatsApp
-          API to transform their communication and drive results.
-        </Typography>
+            {useCases.map((item, index) => (
+              <Box
+                key={index}
+                sx={{
+                  px: 3,
+                  py: 5,
+                  backgroundColor: "#1a1f2e",
+                  borderRadius: 3,
+                  height: "230px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                  gap: 1.5,
+                }}
+              >
+                <Box>{item.icon}</Box>
+                <Typography variant="subtitle1" fontWeight={600}>
+                  {item.title}
+                </Typography>
+                <Typography variant="body2" color="#ccc">
+                  {item.description}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
 
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: {
-              xs: "1fr",
-              sm: "repeat(2, 1fr)",
-              md: "repeat(3, 1fr)",
-            },
-            gap: 3,
-            rowGap: 3,
-            columnGap: 3,
-            mt: 4,
-          }}
-        >
-          {useCases.map((item, index) => (
-            <Box
-              key={index}
+          <Box mt={6} textAlign="center">
+            <CustomButton
+              label={"Start Building Today"}
               sx={{
-                px: 3,
-                py: 5,
-                backgroundColor: "#1a1f2e",
-                borderRadius: 3,
-                height: "150px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                justifyContent: "center",
-                gap: 1.5,
+                background: "linear-gradient(to right, #23D067, #118E7C)",
+                color: "white",
               }}
-            >
-              <Box>{item.icon}</Box>
-              <Typography variant="subtitle1" fontWeight={600}>
-                {item.title}
-              </Typography>
-              <Typography variant="body2" color="#ccc">
-                {item.description}
-              </Typography>
-            </Box>
-          ))}
-        </Box>
-
-        <Box mt={6} textAlign="center">
-          <CustomButton
-            label={"Start Building Today"}
-            background={undefined}
-            color={"white"}
-            backgroundGradient={"linear-gradient(to right, #23D067, #118E7C)"}
-          />
-        </Box>
-      </Container>
+            />
+          </Box>
+        </Container>
+      </AnimatedComponent>
     </Box>
   );
 }

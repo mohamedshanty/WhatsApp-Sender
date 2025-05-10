@@ -13,7 +13,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import CustomButton from "../components/CustomButton";
+import CustomButton from "../../components/CustomButton";
 
 export default function Hero() {
   return (
@@ -26,6 +26,7 @@ export default function Hero() {
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
+        mt: "-10px",
       }}
     >
       {/* SVG Spotlight */}
@@ -123,7 +124,13 @@ export default function Hero() {
           Developer-Friendly API With No Per-message fees
         </Typography>
 
-        <Stack direction="row" justifyContent="center" spacing={1} mb={3}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          spacing={1}
+          mb={3}
+          alignItems={"center"}
+        >
           <Rating value={5.0} precision={0.5} readOnly />
           <Typography variant="body2" sx={{ fontWeight: "light" }}>
             Rated 4.5/5.0 On Sourceforge
@@ -140,16 +147,14 @@ export default function Hero() {
           flexWrap="wrap"
         >
           <CustomButton
-            background="white"
-            color="black"
             label="Start Your Free Trial"
-            backgroundGradient={undefined}
+            sx={{ backgroundColor: "white", color: "black" }}
+            link={"/signup"}
           />
           <CustomButton
-            color="white"
-            background="transparent"
             label="View API Docs"
-            backgroundGradient={undefined}
+            sx={{ backgroundColor: "transparent", color: "white" }}
+            link={"/documentation"}
           />
         </Stack>
 
@@ -169,8 +174,9 @@ export default function Hero() {
             justifyContent: "center",
             flexDirection: { xs: "column", md: "row" },
             gap: 2,
-            width: "80%",
+            width: { xs: "90%", md: "60%" },
             maxWidth: 800,
+            background: "linear-gradient(to bottom, #0A0A0A, #101624)",
           }}
         >
           <Stack
@@ -187,13 +193,10 @@ export default function Hero() {
 
           {/* Divider */}
           <Divider
-            orientation={
-              ["xs", "sm"].includes("xs") ? "horizontal" : "vertical"
-            }
             flexItem
             sx={{
-              backgroundColor: "white",
-              display: { xs: "none", md: "block" },
+              backgroundColor: "#cdcdcd94",
+              display: { xs: "none", md: "block", width: 2, height: 30 },
             }}
           />
 
@@ -211,11 +214,12 @@ export default function Hero() {
 
           {/* Divider */}
           <Divider
-            orientation="vertical"
             flexItem
             sx={{
-              backgroundColor: "white",
+              backgroundColor: "#cdcdcd94",
               display: { xs: "none", md: "block" },
+              width: 2,
+              height: 30,
             }}
           />
 
