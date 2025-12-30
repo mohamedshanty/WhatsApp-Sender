@@ -6,7 +6,7 @@ export const getDesignTokens = (mode) => ({
           // palette values for light mode
         }
       : {
-          // palette values for dark mode
+          // palette values for dark modeee
         }),
   },
 });
