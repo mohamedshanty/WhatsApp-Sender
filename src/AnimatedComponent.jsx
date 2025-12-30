@@ -8,7 +8,7 @@ const AnimatedComponent = ({
   triggerOnce = false,
 }) => {
   const [ref, inView] = useInView({
-    triggerOnce: triggerOnce, // الآن يمكن التحكم به من الخارج
+    triggerOnce: triggerOnce,
     threshold: 0.1,
   });
 
